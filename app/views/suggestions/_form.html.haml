@@ -1,0 +1,12 @@
+= simple_form_for(@suggestion) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :hours
+    = f.input :minutes
+    = f.input :seconds
+    = f.input :title
+    = f.input :description
+
+  .form-actions
+    = f.button :submit

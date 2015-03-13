@@ -1,4 +1,8 @@
 SuggestionBox::Application.routes.draw do
+  resources :suggestions
+
+  get 'random' => 'suggestion#random'
+
   authenticated :user do
     root :to => 'home#index'
   end

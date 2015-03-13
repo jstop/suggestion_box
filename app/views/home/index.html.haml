@@ -1,4 +1,14 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+.container.text-center
+  .row{:style => "position: fixed; padding:10px;z-index:200;margin: 5% auto;top:15%;left: 0;right: 0;"}
+    %h1
+      What to do...
+  .row{:style => "position: fixed; padding:10px;margin: 5% auto;top:35%;left: 0;right: 0;"}
+    %a{:href => suggestion_path(Suggestion.find rand(Suggestion.count )+1 )}
+      %button.btn.btn-large.btn-success
+        Take A Suggestion
+    %a{:href => new_suggestion_path}
+      %button.btn.btn-large.btn-primary
+        Make A Suggestion
+%a.pull-right{:style => "position:fixed; bottom: 4%; right:4%;"}
+  About the Community
+  

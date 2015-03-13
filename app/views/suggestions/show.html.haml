@@ -1,0 +1,59 @@
+.container.text-center
+  .row{:style => "position: fixed; padding:10px;z-index:200;margin: 5% auto;top:3%;left: 0;right: 0;"}
+    %h1.text-info
+      =@suggestion.title
+    %br/
+    %h4.text-warning
+      -if @suggestion.hours
+        ="#{@suggestion.hours} HOURS" 
+      -if @suggestion.minutes
+        ="#{@suggestion.minutes} MINUTES" 
+      -if @suggestion.seconds
+        ="#{@suggestion.seconds} SECONDS" 
+  .row{:style => "position: fixed; padding:10px;z-index:200;margin: 5% auto;top:22%;left: 0;right: 0;"}
+    %p.lead.muted.text-center.offset3.span6
+      =@suggestion.description
+  .row{:style => "position: fixed; padding:10px;z-index:200;margin: 5% auto;top:39%;left: 0;right: 0;"}
+    .btn.btn-large.btn-success{:style =>"width: 20%; padding-top:20px; padding-bottom:20px;"}
+      Begin
+  .row{:style =>"position:fixed; bottom: 10%;left:0; right:0;"}
+    %blockquote
+      %p
+        “All we have to decide is what to do with the time that is given us” 
+      %small
+        J.R.R. Tolkien, The Fellowship of the Ring
+  %div{:style => "position:fixed; bottom: 0px; right:0px;"}
+    %a{:href => suggestion_path(Suggestion.find rand(Suggestion.count )+1 )}
+      .btn
+        next suggestion
+    %br/
+    or
+    %br/
+    %a{:href => new_suggestion_path}
+      %button.pull-left.btn
+        Make A Suggestion
+  -#
+    %p#notice= notice
+
+    %p
+      %b Hours:
+      = @suggestion.hours
+    %p
+      %b Minutes:
+      = @suggestion.minutes
+    %p
+      %b Seconds:
+      = @suggestion.seconds
+    %p
+      %b Title:
+      = @suggestion.title
+    %p
+      %b Description:
+      = @suggestion.description
+    %p
+      %b Completed:
+      = @suggestion.completed
+
+    = link_to 'Edit', edit_suggestion_path(@suggestion)
+    \|
+    = link_to 'Back', suggestions_path
